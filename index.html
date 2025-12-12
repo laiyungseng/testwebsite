@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Strategy Partners - Marketing Consulting Excellence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-bg: #0a0a0a;
+            --secondary-bg: #151515;
+            --card-bg: #1a1a1a;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border: #27272a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1.2rem 0;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--secondary-bg);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-card p, .about-card ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .timeline-item {
+            text-align: center;
+            max-width: 250px;
+        }
+
+        .timeline-year {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        #services {
+            background: var(--primary-bg);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .service-sidebar {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .service-tab {
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--secondary-bg);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            font-weight: 500;
+        }
+
+        .service-tab:hover {
+            background: var(--primary-bg);
+            border-color: var(--border);
+        }
+
+        .service-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .service-display {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 4rem;
+            border: 1px solid var(--border);
+            min-height: 600px;
+        }
+
+        .service-content {
+            display: none;
+        }
+
+        .service-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .service-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .deliverables {
+            margin-bottom: 3rem;
+        }
+
+        .deliverables h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .deliverables ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .deliverables li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .deliverables li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .learn-more-btn {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .learn-more-btn:hover {
+            background: var(--accent);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--secondary-bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .social-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-bg);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+
+            .service-sidebar {
+                position: static;
+                display: flex;
+                overflow-x: auto;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .service-tab {
+                white-space: nowrap;
+                margin-bottom: 0;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .service-display {
+                padding: 2rem;
+            }
+
+            .timeline {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Apex<span>Strategy</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Product / Services</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Transform Your Marketing Into Revenue Growth</h1>
+                <p>We partner with ambitious businesses to craft data-driven marketing strategies that deliver measurable results and sustainable competitive advantage.</p>
+                <a href="#contact" class="cta-button">Book a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <h2>About Apex Strategy Partners</h2>
+            <p>Building world-class marketing operations for tomorrow's market leaders</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <p>To empower businesses with strategic marketing excellence that drives tangible growth, builds lasting brand equity, and creates meaningful connections with their audiences in an increasingly complex digital landscape.</p>
+            </div>
+
+            <div class="about-card">
+                <h3>Our Vision</h3>
+                <p>To be the most trusted marketing consulting partner for companies seeking to transform their market position through innovative strategies, cutting-edge analytics, and unwavering commitment to measurable outcomes.</p>
+            </div>
+
+            <div class="about-card">
+                <h3>Core Values</h3>
+                <ul>
+                    <li>Data-Driven Decision Making</li>
+                    <li>Transparent Communication</li>
+                    <li>Continuous Innovation</li>
+                    <li>Client Success First</li>
+                    <li>Strategic Excellence</li>
+                    <li>Ethical Marketing Practices</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <h3>Our Expertise</h3>
+                <p>We specialize in comprehensive marketing transformation for mid-market and enterprise clients across technology, finance, healthcare, and consumer sectors. Our team combines strategic consulting acumen with hands-on execution capabilities.</p>
+            </div>
+
+            <div class="about-card">
+                <h3>What Sets Us Apart</h3>
+                <ul>
+                    <li>Proprietary marketing analytics framework</li>
+                    <li>Cross-functional team of specialists</li>
+                    <li>Proven ROI methodology</li>
+                    <li>Industry-specific insights</li>
+                    <li>Agile implementation approach</li>
+                </ul>
+            </div>
+
+            <div class="about-card">
+                <h3>Leadership</h3>
+                <p>Our leadership team brings together over 75 years of combined experience from top-tier consulting firms, Fortune 500 marketing departments, and successful startup environments. We blend strategic vision with operational excellence.</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">2018</div>
+                <div class="timeline-text">Founded with a mission to democratize enterprise-grade marketing</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2020</div>
+                <div class="timeline-text">Expanded to serve 50+ clients across 8 industries</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-text">Launched proprietary marketing intelligence platform</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-text">Recognized as top marketing consultancy with 98% client retention</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive marketing solutions tailored to your growth objectives</p>
+        </div>
+
+        <div class="services-container">
+            <div class="service-sidebar">
+                <div class="service-tab active" data-service="research">Market Research & Insights</div>
+                <div class="service-tab" data-service="branding">Branding Strategy Development</div>
+                <div class="service-tab" data-service="digital">Digital Marketing Campaigns</div>
+                <div class="service-tab" data-service="seo">SEO & Performance Analytics</div>
+                <div class="service-tab" data-service="social">Social Media Management</div>
+                <div class="service-tab" data-service="automation">Marketing Automation & CRM</div>
+            </div>
+
+            <div class="service-display">
+                <div class="service-content active" id="research">
+                    <h3>Market Research & Insights</h3>
+                    <p class="service-description">Unlock deep customer understanding and competitive intelligence through comprehensive market research. We combine quantitative data analysis with qualitative insights to reveal hidden opportunities and validate strategic decisions with confidence.</p>
+                    
+                    <div class="deliverables">
+                        <h4>Key Deliverables</h4>
+                        <ul>
+                            <li>Comprehensive market analysis report with competitive landscape mapping and opportunity identification</li>
+                            <li>Customer persona development including behavioral patterns, pain points, and decision-making frameworks</li>
+                            <li>Strategic recommendations dashboard with prioritized initiatives and ROI projections</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="service-content" id="branding">
+                    <h3>Branding Strategy Development</h3>
+                    <p class="service-description">Build a powerful, differentiated brand that resonates with your target audience and drives premium positioning. Our strategic approach combines brand architecture, messaging frameworks, and visual identity to create lasting market impact.</p>
+                    
+                    <div class="deliverables">
+                        <h4>Key Deliverables</h4>
+                        <ul>
+                            <li>Complete brand strategy playbook including positioning, messaging architecture, and brand voice guidelines</li>
+                            <li>Visual identity system with logo design, color palette, typography, and brand asset library</li>
+                            <li>Brand launch roadmap with internal alignment tools and external communication strategy</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="service-content" id="digital">
+                    <h3>Digital Marketing Campaigns</h3>
+                    <p class="service-description">Execute high-performance digital campaigns that drive qualified leads and accelerate revenue growth. We orchestrate multi-channel strategies across paid search, display, social, and content marketing with rigorous optimization and transparent reporting.</p>
+                    
+                    <div class="deliverables">
+                        <h4>Key Deliverables</h4>
+                        <ul>
+                            <li>Integrated campaign strategy with channel selection, budget allocation, and KPI framework</li>
+                            <li>Creative asset development including ad copy, landing pages, and conversion-optimized content</li>
+                            <li>Performance dashboard with real-time analytics, A/B test results, and optimization recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="service-content" id="seo">
+                    <h3>SEO & Performance Analytics</h3>
+                    <p class="service-description">Dominate organic search rankings and maximize marketing ROI through technical excellence and data-driven optimization. Our holistic SEO approach combines technical audits, content strategy, and advanced analytics to deliver sustainable traffic growth and conversion improvements.</p>
+                    
+                    <div class="deliverables">
+                        <h4>Key Deliverables</h4>
+                        <ul>
+                            <li>Technical SEO audit with prioritized fixes, site architecture recommendations, and implementation roadmap</li>
+                            <li>Content optimization strategy including keyword research, on-page SEO, and content calendar</li>
+                            <li>Analytics implementation with custom dashboards, attribution modeling, and performance insights</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="service-content" id="social">
+                    <h3>Social Media Management</h3>
+                    <p class="service-description">Build engaged communities and amplify brand presence across social platforms with strategic content and authentic engagement. We create cohesive social strategies that align with business objectives while fostering meaningful connections with your audience.</p>
+                    
+                    <div class="deliverables">
+                        <h4>Key Deliverables</h4>
+                        <ul>
+                            <li>Platform-specific content strategy with editorial calendar, content pillars, and engagement protocols</li>
+                            <li>Creative content production including graphics, video, copy, and community management guidelines</li>
+                            <li>Social analytics reporting with audience insights, engagement metrics, and growth recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+
+                <div class="service-content" id="automation">
+                    <h3>Marketing Automation & CRM Optimization</h3>
+                    <p class="service-description">Transform marketing efficiency and sales alignment through intelligent automation and CRM excellence. We design and implement sophisticated workflows that nurture leads, personalize customer journeys, and provide actionable intelligence to drive revenue growth.</p>
+                    
+                    <div class="deliverables">
+                        <h4>Key Deliverables</h4>
+                        <ul>
+                            <li>Marketing automation platform setup with lead scoring, nurture workflows, and integration architecture</li>
+                            <li>CRM optimization including data hygiene, custom fields, pipeline management, and sales enablement tools</li>
+                            <li>Performance monitoring system with conversion tracking, funnel analysis, and continuous improvement protocols</li>
+                        </ul>
+                    </div>
+                    
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2>Let's Connect</h2>
+            <p>Ready to transform your marketing? Reach out through your preferred channel</p>
+        </div>
+
+        <div class="contact-grid">
+            <div>
+                <h3 style="margin-bottom: 2rem; font-size: 1.8rem;">Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com" class="social-item" target="_blank">
+                        <div class="social-icon">📘</div>
+                        <div class="social-name">Facebook</div>
+                    </a>
+                    <a href="https://instagram.com" class="social-item" target="_blank">
+                        <div class="social-icon">📸</div>
+                        <div class="social-name">Instagram</div>
+                    </a>
+                    <a href="https://linkedin.com" class="social-item" target="_blank">
+                        <div class="social-icon">💼</div>
+                        <div class="social-name">LinkedIn</div>
+                    </a>
+                    <a href="https://telegram.org" class="social-item" target="_blank">
+                        <div class="social-icon">✈️</div>
+                        <div class="social-name">Telegram</div>
+                    </a>
+                    <a href="https://wa.me/1234567890" class="social-item" target="_blank">
+                        <div class="social-icon">💬</div>
+                        <div class="social-name">WhatsApp</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3 style="margin-bottom: 2rem; font-size: 1.8rem;">Send Us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your project and how we can help..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="copyright">
+                © 2025 Apex Strategy Partners. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Service Tab Switching
+        const serviceTabs = document.querySelectorAll('.service-tab');
+        const serviceContents = document.querySelectorAll('.service-content');
+
+        serviceTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const serviceId = tab.getAttribute('data-service');
+                
+                // Remove active class from all tabs and contents
+                serviceTabs.
