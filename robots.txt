@@ -1,0 +1,26 @@
+# --- General Search Crawlers ---
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /tmp/
+
+# --- AEO Strategy: Explicitly Allow AI Model Scrapers ---
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+# Google Gemini / Bard (Generative AI)
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+
+# Common Crawl (Used by many LLMs for training data)
+User-agent: CCBot
+Allow: /
+
+# --- Sitemap Location ---
+Sitemap: https://www.drive-future.com/sitemap.xml
