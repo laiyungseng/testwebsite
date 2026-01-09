@@ -18,6 +18,10 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
+# Perplexity AI (High Priority for Answer Engines)
+User-agent: PerplexityBot
+Allow: /
+
 # Common Crawl (Used by many LLMs for training data)
 User-agent: CCBot
 Allow: /
