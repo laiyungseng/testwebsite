@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <title>AEO & AI Search Agency | Drive-Future</title>
     <link rel="icon" type="image/svg" href="/assets/DriveFuture - icon.svg">
-    
-    <meta name="description" content="Is your brand invisible in ChatGPT? Drive-Future optimizes Enterprise entities for AI Search (AEO) and Generative Citations. Secure your Knowledge Graph visibility today.">
+    <title>AEO & AI Search Agency | Drive-Future</title>
+
+    <meta name="description" content="Is your brand invisible in ChatGPT? Drive-Future optimizes Enterprise entities for AI SEO Search (AEO) and Generative Citations. Secure your Knowledge Graph visibility today.">
     <meta name="keywords" content="Drive-Future, DriveFuture, AEO, Answer Engine Optimization, GEO, Generative Engine Optimization, AI Search Intelligence, Enterprise SEO, Knowledge Graph, Customer Intent Analysis">
-    <meta name="LAI YUNG SENG" content="Drive-Future Agency">
+    <meta name="DriveFuture" content="Drive-Future Agency">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.drive-future.com/">
 
@@ -251,12 +250,46 @@
         .pricing-header { text-align: center; margin-bottom: 2rem; }
         .price { font-size: 3rem; font-weight: 800; color: var(--dark); }
         .price span { font-size: 1rem; font-weight: 500; color: var(--text); }
+        .price-label{ font-size: 0.9rem; font-weight: 500; opacity: 0.8; margin-bottom: -5px;}
         .feature-list { list-style: none; margin-bottom: 2rem; }
         .feature-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; color: var(--text); }
         .feature-list i { color: #10B981; }
         .top-bar { position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: var(--primary); }
 
         /* --- Form --- */
+        /* Add/Replace this in your <style> section */
+        .audit-card {
+            background: #ffffff;
+            /* This creates the curve radius you asked for */
+            border-radius: 30px; 
+            /* This adds a deep shadow so the white box pops off the background */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            padding: 3.5rem 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid #E2E8F0;
+            position: relative; /* Needed for the colored top bar */
+            overflow: hidden; /* Ensures the inner content doesn't break the curved corners */
+        }
+
+        /* This adds a cool blue/green line at the very top of the curved box */
+        .audit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #2563EB 0%, #10B981 100%);
+        }
+
+        /* Mobile Responsiveness for the card */
+        @media (max-width: 768px) {
+            .audit-card {
+                padding: 2rem;
+                border-radius: 20px;
+            }
+        }
         .contact-box { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 24px; padding: 3rem; max-width: 700px; margin: 0 auto; }
         .form-group { margin-bottom: 1.5rem; }
         .form-label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark); font-size: 0.9rem; }
@@ -548,65 +581,175 @@
     <section id="pricing" class="section" style="background: var(--dark); color: white;">
         <div class="container">
             <div class="text-center">
-                <h2 style="color: white;">AEO Dominion Package</h2>
-                <p class="section-desc" style="color: #94A3B8;">Stop paying for hours. Pay for share of voice.</p>
+                <h2 style="color: white;">Not sure where to start?</h2>
+                <p class="section-desc" style="color: #94A3B8;">Get a comprehensive entity audit and a 1-on-1 roadmap strategy.</p>
             </div>
 
             <div class="pricing-card">
-                <div class="top-bar"></div>
-                <div class="pricing-header">
-                    <h3 class="feature-title">Enterprise AI-Ready</h3>
-                    <div class="price">$3,500 <span>/mo</span></div>
+                <div class="top-bar" style="background: #10B981;"></div>
+                
+                <div class="pricing-header" style="text-align: left; padding-bottom: 1rem; border-bottom: 1px solid #334155; margin-bottom: 2rem;">
+                    <h3 class="feature-title" style="font-size: 1.8rem; margin-bottom: 0.5rem;">AEO Deep-Dive Audit</h3>
+                    <p style="color: #94A3B8; font-size: 1rem; line-height: 1.5;">
+                        We analyze your current Schema, content gaps, and Knowledge Graph visibility.
+                    </p>
                 </div>
                 
                 <ul class="feature-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Full Schema Architecture</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Entity & Knowledge Graphing</li>
-                    <li><i class="fa-solid fa-circle-check"></i> 4 Programmatic Content Clusters</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Monthly AI Citation Reporting</li>
+                    <li>
+                        <i class="fa-solid fa-magnifying-glass" style="color: #10B981; margin-top: 4px;"></i>
+                        <div>
+                            <strong style="color: var(--dark); display:block;">Technical Schema Analysis</strong>
+                            <span style="font-size: 0.9rem;">We check for valid JSON-LD and Entity gaps.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-robot" style="color: #10B981; margin-top: 4px;"></i>
+                        <div>
+                            <strong style="color: var(--dark); display:block;">AI Visibility Check</strong>
+                            <span style="font-size: 0.9rem;">See how you currently appear in ChatGPT & Gemini.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-file-contract" style="color: #10B981; margin-top: 4px;"></i>
+                        <div>
+                            <strong style="color: var(--dark); display:block;">Strategic Roadmap</strong>
+                            <span style="font-size: 0.9rem;">A step-by-step PDF plan to dominate your niche.</span>
+                        </div>
+                    </li>
                 </ul>
 
-                <a href="#contact" class="btn btn-primary btn-full">Secure Your Spot</a>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#contact" class="btn btn-primary btn-full" style="background: #2563EB; border: none;">
+                        Book Audit & Consult
+                    </a>
+                    <p style="margin-top: 1rem; font-size: 0.85rem; color: #64748B;">
+                        Limited spots available for this month.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section" style="background: white;">
+    <section id="contact" class="section" style="background: #F8FAFC;">
         <div class="container">
             <div class="text-center mb-8">
                 <h2>Is Your Site "AI Readable"?</h2>
-                <p class="section-desc">Enter your URL for a free entity gap analysis.</p>
+                <p class="section-desc">Enter your URL below. We will run a 15-point inspection on your Knowledge Graph visibility.</p>
             </div>
 
-            <div class="contact-box">
-                <form>
+            <div class="audit-card">
+                
+                <div class="text-center mb-8">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Start Free Audit</h3>
+                    <p style="font-size: 0.9rem; color: #64748B;">Results sent via email in 2 minutes.</p>
+                </div>
+
+                <form id="auditForm" onsubmit="handleAuditSubmit(event)">
+                <div class="form-group">
+                    <label class="form-label">Company Name</label>
+                    <input type="text" name="company" class="form-input" required placeholder="Acme Corp">
+                </div>
+                
+                <div class="grid grid-2" style="gap: 1rem;">
                     <div class="form-group">
-                        <label class="form-label">Company Name</label>
-                        <input type="text" class="form-input" placeholder="Acme Corp">
-                    </div>
-                    <div class="grid grid-2" style="gap: 1rem;">
-                        <div class="form-group">
-                            <label class="form-label">Work Email</label>
-                            <input type="email" class="form-input" placeholder="you@company.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Website URL</label>
-                            <input type="text" class="form-input" placeholder="https://...">
-                        </div>
+                        <label class="form-label">Work Email</label>
+                        <input type="email" name="email" class="form-input" required placeholder="you@company.com">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Primary Goal</label>
-                        <select class="form-select">
-                            <option>Increase AI Visibility</option>
-                            <option>Fix Technical SEO</option>
-                            <option>Programmatic Content</option>
-                        </select>
+                        <label class="form-label">Website URL</label>
+                        <input type="text" name="website" class="form-input" required placeholder="https://...">
                     </div>
-                    <button class="btn btn-blue btn-full">Run Analysis</button>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Primary Goal</label>
+                    <select name="goal" class="form-select">
+                        <option value="Increase AI Visibility">Increase AI Visibility</option>
+                        <option value="Fix Technical SEO">Fix Technical SEO</option>
+                        <option value="Programmatic Content">Programmatic Content</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-blue btn-full" style="padding: 1rem; font-size: 1.1rem;">
+                    <i class="fa-solid fa-bolt"></i> Run Analysis & Book Review
+                </button>
+                    
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #94A3B8;">
+                        <i class="fa-solid fa-lock"></i> 100% Secure. We never share your data.
+                    </p>
                 </form>
             </div>
-        </div>
+            </div>
     </section>
+
+    <script>
+        
+        async function handleAuditSubmit(event) {
+            event.preventDefault(); // Stop page refresh
+            
+            const form = event.target;
+            const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
+
+            // 1. UI Loading State
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending Data...';
+            btn.style.opacity = "0.8";
+            btn.disabled = true;
+
+            // 2. Extract Values
+            const company = form.querySelector('input[name="company"]').value;
+            const email = form.querySelector('input[name="email"]').value;
+            const website = form.querySelector('input[name="website"]').value;
+            const goal = form.querySelector('select[name="goal"]').value;
+
+            // 3. Construct the JSON Object (Exactly as requested)
+            const dataObject = {
+                "Company Name": company,
+                "Work Email": email,
+                "Website URL": website,
+                "Primary Goal": goal // Sends the selected string
+            };
+
+            // 4. Wrap in Array (As requested: [{...}])
+            const jsonPayload = JSON.stringify([dataObject]);
+
+            try {
+                // ... inside handleAuditSubmit function ...
+
+                // 1. Construct the JSON (Same as before)
+                const dataObject = {   
+                    "Company Name": company,
+                    "Work Email": email,
+                    "Website URL": website,
+                    "Primary Goal": [goal] 
+                };
+                const jsonPayload = JSON.stringify([dataObject], null, 2); // null, 2 makes it pretty/readable
+
+                // 2. FORCE DOWNLOAD TO BROWSER
+                const blob = new Blob([jsonPayload], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `audit_${company.replace(/\s+/g, '_')}.json`; // Names file like "audit_Acme_Corp.json"
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                // 3. Redirect after download
+                setTimeout(() => {
+                    window.location.href = "booking.html?email=" + encodeURIComponent(email);
+                }, 1000);
+            } catch (error) {
+                console.error("Error:", error);
+                // Fallback: If backend fails, we still might want to redirect the user 
+                // to the booking page so you don't lose the meeting.
+                // alert("Connection error, but let's book your slot.");
+                window.location.href = "booking.html?email=" + encodeURIComponent(email);
+            }
+        }
+
+    </script>
 
     <section class="section" style="background: #F8FAFC;">
         <div class="container" style="max-width: 800px;">
