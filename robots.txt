@@ -4,6 +4,15 @@ Allow: /
 Disallow: /private/
 Disallow: /admin/
 Disallow: /tmp/
+# Hide the booking/success page from search results
+Disallow: /booking.html
+
+# Hide backend scripts (optional, but good practice)
+Disallow: /email-sender.js
+Disallow: /assets/
+Disallow: /node_modules
+Disallow: /.venv
+Disallow: /pdf
 
 # --- AEO Strategy: Explicitly Allow AI Model Scrapers ---
 # OpenAI (ChatGPT)

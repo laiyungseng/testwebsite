@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="/assets/DriveFuture_icon.svg">
+    <title>Audit in Progress... | Drive-Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB; /* Bright Blue */
+            --primary-dark: #1E40AF;
+            --dark: #0F172A;    /* Deep Navy */
+            --text: #475569;    /* Slate Gray */
+            --light-bg: #F8FAFC;
+            --white: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+            --shadow-lg: 0 20px 50px -12px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --radius: 16px;
+        }
+
+
+        body { font-family: 'Inter', sans-serif; background: #F8FAFC; color: #0F172A; text-align: center; padding: 4rem 1rem; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 20px 50px -12px rgba(0,0,0,0.1); }
+        h1 { color: #2563EB; margin-bottom: 1rem; }
+        p { font-size: 1.1rem; color: #64748B; margin-bottom: 2rem; line-height: 1.6; }
+        .loader { font-size: 3rem; margin-bottom: 1.5rem; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        /*Button*/
+        
+        .btn { padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; font-size: 0.95rem; display: inline-block; }
+        .btn-blue { background: var(--primary); color: white; border: none; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); }
+        .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="loader">🤖</div>
+        <h1>Analyzing Your Entity...</h1>
+        <p>
+            Our AI agents are currently scanning your Knowledge Graph visibility.<br>
+            Your comprehensive report will be emailed to you shortly.
+        </p>
+        
+        <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 2rem 0;">
+
+        <h2 style="margin-bottom: 1rem;">Don't wait. Secure your roadmap now.</h2>
+       <p>
+            The audit identifies the problems. The strategy call fixes them.<br>
+            <strong>Book your 15-minute review with our Principal Strategist below.</strong>
+        </p>
+        <div style="margin-top: 2rem;">
+            <a href="index.html" class="btn btn-blue" style="color: #e7ecf3; text-decoration: none; font-size: 0.9rem;">&larr; Return to Homepage</a>
+        </div>
+    </div>
+
+</body>
+</html>

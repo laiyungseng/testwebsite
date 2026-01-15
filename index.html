@@ -25,7 +25,7 @@
     <meta name="twitter:description" content="Optimize your brand for the AI era. Schema audits, entity mapping, and automated intelligence.">
     <meta name="twitter:image" content="https://www.drive-future.com/assets/social-share-card.jpg">
 
-    <link rel="preload" as="image" href="/assets/DriveFuture-logo.png">
+    <link rel="preload" as="image" href="/assets/DriveFuture-logo.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -683,6 +683,8 @@
             </div>
     </section>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="email-sender.js"></script>
     <script>
         
         async function handleAuditSubmit(event) {
@@ -711,35 +713,11 @@
                 "Primary Goal": goal // Sends the selected string
             };
 
-            // 4. Wrap in Array (As requested: [{...}])
-            const jsonPayload = JSON.stringify([dataObject]);
-
             try {
-                // ... inside handleAuditSubmit function ...
 
-                // 1. Construct the JSON (Same as before)
-                const dataObject = {   
-                    "Company Name": company,
-                    "Work Email": email,
-                    "Website URL": website,
-                    "Primary Goal": [goal] 
-                };
-                const jsonPayload = JSON.stringify([dataObject], null, 2); // null, 2 makes it pretty/readable
-
-                // 2. FORCE DOWNLOAD TO BROWSER
-                const blob = new Blob([jsonPayload], { type: "application/json" });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = `audit_${company.replace(/\s+/g, '_')}.json`; // Names file like "audit_Acme_Corp.json"
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-
-                // 3. Redirect after download
-                setTimeout(() => {
-                    window.location.href = "booking.html?email=" + encodeURIComponent(email);
-                }, 1000);
+                await sendAuditDatatoEmail(dataObject);
+                // 3. Redirect after function complete
+                window.location.href = "booking.html?email=" + encodeURIComponent(email);
             } catch (error) {
                 console.error("Error:", error);
                 // Fallback: If backend fails, we still might want to redirect the user 

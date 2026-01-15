@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Analysis Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* BASE STYLES */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        /* 1. GLOBAL BOX SIZING RESET - CRITICAL */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px;
+
+            padding-bottom: 60px;
+
+            background-color: #f8f9fc;
+            color: #333;
+        }
+
+        /* HEADER SECTION */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e3e6f0;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 28px;
+            color: #4e73df;
+            margin: 0;
+        }
+        .date-badge {
+            background: #e3e6f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* SCORE CARD SECTION */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid #4e73df;
+        }
+
+        .score-box {
+            text-align: center;
+        }
+        .big-score {
+            font-size: 72px;
+            font-weight: 800;
+            color: #2c3e50;
+            line-height: 1;
+        }
+        .score-label {
+            color: #858796;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* INSIGHTS SECTION */
+        .insight-box h3 {
+            margin-top: 0;
+            color: #4e73df;
+        }
+        .insight-text {
+            line-height: 1.6;
+            color: #5a5c69;
+        }
+
+        /* CHART SECTION STYLES */
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            
+            /* 2. FORCE DIMENSIONS HERE */
+            height: 300px; 
+            width: 100%;
+            max-width: 100%; /* Prevents expansion beyond parent */        
+        }        
+        /* FOOTER */
+        .footer {
+            position: fixed; 
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            
+            /* Aesthetics */
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            background-color: #f8f9fc; /* Match body bg to cover content behind it */
+            padding: 10px 40px; /* Adjust padding as needed */
+            border-top: 1px solid #e3e6f0; /* Optional: adds a nice separator line */
+        }
+        /* 1. Define A4 Size explicitly */
+        @page {
+            size: A4;
+            margin: 0; /* We handle margins in the body */
+        }
+
+        /* 2. The "Don't Cut Me In Half" Class */
+        .card, 
+        .chart-container, 
+        .insight-box, 
+        h3 {
+            /* This pushes the element to the next page if it doesn't fit */
+            break-inside: avoid;       /* Modern browsers */
+            page-break-inside: avoid;  /* Legacy for PDF engines (wkhtmltopdf/Puppeteer) */
+        }
+
+        /* 3. Ensure Headers stay with their text */
+        h3 {
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <h1>{{ client_name }}</h1>
+            <div style="font-size: 14px; color: #888;">Website Structure Audit</div>
+        </div>
+        <div class="date-badge">{{ report_date }}</div>
+    </div>
+
+    <div class="hero-grid">
+        <div class="card score-box">
+            <div class="score-label">Overall Health Score</div>
+            <div class="big-score">{{ overall_score }}</div>
+        </div>
+        <div class="card insight-box">
+            <h3>Executive Summary</h3>
+            <div class="insight-text">
+                {{ executive_summary }}
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <div class="chartwrapper" style="position: relative; height: 100%; width: 100%; max-width:50%; margin: 0;">
+            <canvas id="performanceChart"></canvas>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <h3>Detailed Breakdown</h3>
+        {% for metric in metrics %}
+        <div style="background: white; padding: 15px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600;">{{ metric.name }}</span>
+            <span style="background: {{ '#1cc88a' if metric.score > 70 else '#f6c23e' }}; color: white; padding: 4px 12px; border-radius: 15px; font-size: 12px;">{{ metric.score }}/100</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="footer">
+        Generated by Drive-Future Agency • {{ client_url }}
+    </div>
+
+    <script>
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ chart_labels | tojson }},
+                datasets: [{
+                    label: 'Category Score',
+                    data: {{ chart_data | tojson }},
+                    backgroundColor: [
+                        'rgba(78, 115, 223, 0.7)',
+                        'rgba(28, 200, 138, 0.7)',
+                        'rgba(54, 162, 235, 0.7)',
+                        'rgba(255, 206, 86, 0.7)',
+                        'rgba(153, 102, 255, 0.7)', 
+                        'rgba(255, 159, 64, 0.7)'  
+                    ],
+                    borderColor: [
+                        'rgba(78, 115, 223, 1)',
+                        'rgba(28, 200, 138, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    /* ------ Gap Reduction Settings ------*/
+                    barPercentage: 0.95,      
+                    categoryPercentage: 1.0,
+
+                    /* ----- Bar dimension -----*/
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    // Keeps bars looking nice if data count is low
+                    maxBarThickness: 60
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // MANDATORY for fitting wrapper
+                plugins: {
+                    legend: { display: false },
+                    title: { display: true, text: 'Performance by Category' }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100 
+                    },
+                    x: {
+                        grid: {
+                            display: false 
+                        },
+                        ticks: {
+                            autoSkip: true,
+                            maxRotation: 45,
+                            minRotation: 0
+                        }
+                    }
+                },
+                animation: {
+                    duration: 0
+                }
+            }
+        });
+    </script>
+</body>
+</html>
