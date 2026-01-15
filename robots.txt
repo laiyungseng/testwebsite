@@ -9,7 +9,6 @@ Disallow: /booking.html
 
 # Hide backend scripts (optional, but good practice)
 Disallow: /email-sender.js
-Disallow: /assets/
 Disallow: /node_modules
 Disallow: /.venv
 Disallow: /pdf
@@ -36,4 +35,5 @@ User-agent: CCBot
 Allow: /
 
 # --- Sitemap Location ---
+
 Sitemap: https://www.drive-future.com/sitemap.xml
