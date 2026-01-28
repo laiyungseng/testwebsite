@@ -10,6 +10,7 @@ Disallow: /booking.html
 # Hide backend scripts (optional, but good practice)
 Disallow: /email-sender.js
 Disallow: /node_modules
+Disallow: /cdn-cgi/
 Disallow: /.venv
 Disallow: /pdf
 
@@ -37,3 +38,4 @@ Allow: /
 # --- Sitemap Location ---
 
 Sitemap: https://www.drive-future.com/sitemap.xml
+
