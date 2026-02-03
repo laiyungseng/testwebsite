@@ -37,5 +37,6 @@ Allow: /
 
 # --- Sitemap Location ---
 
-Sitemap: https://www.drive-future.com/sitemap.xml
+Sitemap: https://drive-future.com/sitemap.xml
+
 
