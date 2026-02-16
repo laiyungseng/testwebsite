@@ -4,6 +4,8 @@ Allow: /
 Disallow: /private/
 Disallow: /admin/
 Disallow: /tmp/
+Disallow: /term/
+Disallow: /privacy/
 # Hide the booking/success page from search results
 Disallow: /booking.html
 
