@@ -19,7 +19,7 @@ function sendAuditDatatoEmail(dataObject) {
     console.log("Formatted Template Params:", templateParams);
     console.groupEnd();
 
-    const serviceID = 'service_lg9uqt9'
+    const serviceID = 'service_2g3r88b'
     const templateID= 'template_5w8l5jb'
 
     // 2. Return a Promise with a delay to simulate a real network request.
